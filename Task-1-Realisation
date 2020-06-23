@@ -1,0 +1,50 @@
+/*
+Unfortunately, I later realized that this is an old task and C ++ is not supported.
+http://codeforces.com/problemset/problem/72/I
+*/
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main(void){
+	string n;
+	std::cin >> n;
+	unsigned short int StringLength = n.length();
+	set<unsigned short int>UniqueNums;
+	unsigned short int UniqueNumsLength;
+	
+	for(unsigned short int a = 0;a < StringLength;a++){
+			UniqueNums.insert(n[a] - 48);
+	}
+	
+	set<unsigned short int> :: iterator it = UniqueNums.end();
+	UniqueNumsLength = *it;
+	it = UniqueNums.begin();
+	
+	unsigned int NewN = 0;
+	unsigned int Factor = 1;
+	for(unsigned short int b = 0; b < StringLength;b++){
+		unsigned short int ForOneStepN = n[StringLength - 1 - b] - 48;
+		NewN = NewN + ForOneStepN * Factor; 
+		Factor = Factor * 10;
+	}
+	
+	unsigned short int CountOfDividers = 0;
+	
+	for(unsigned short int c = 0; c < UniqueNumsLength; c++,it++){
+		if(NewN % (*it) == 0){
+			CountOfDividers++;
+		}
+	}
+
+	if(CountOfDividers == 0){
+		std::cout << "upset";
+	}else{
+		if(CountOfDividers == UniqueNumsLength){
+			std::cout << "happier";	
+		}else{
+			std::cout << "happy";
+		}
+	}
+}
