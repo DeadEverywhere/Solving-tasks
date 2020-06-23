@@ -1,2 +1,2 @@
 # Solving-tasks
-Just learn task with cpp
+Just solving tasks with cpp
